@@ -1,0 +1,25 @@
+
+type Post @model @typesense @auth(rules: [
+  { allow: groups, groups: ["Admins"] },
+  { allow: public, operations: [read] }
+  ]){
+  slug: ID! @primaryKey
+  title: String!
+  description: String!
+  content: String!
+  image: String!
+  published: Boolean!
+  tags: [Tag] @manyToMany(relationName: "PostTag")
+}
+
+type Tag @model  @auth(rules: [
+  { allow: groups, groups: ["Admins"] },
+  { allow: public, operations: [read] }
+  ]){
+  name: ID! @primaryKey
+  posts: [Post] @manyToMany(relationName: "PostTag")
+}
+
+# type Test @model {
+#   name: String
+# }

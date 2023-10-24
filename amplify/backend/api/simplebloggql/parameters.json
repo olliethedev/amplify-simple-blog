@@ -1,0 +1,16 @@
+{
+  "AppSyncApiName": "simplebloggql",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authsimpleblogd006062c",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "TypesenseApiKey": "<your api key>",
+  "TypesenseHost": "<your host url>",
+  "TypesensePort": "443",
+  "TypesenseProtocol": "https",
+  "AuthModeLastUpdated": "2023-10-19T20:23:42.224Z"
+}
