@@ -1,11 +1,29 @@
-#TODO
-- add info about keys in amplify/backend/api/simplebloggql/parameters.json
+# Minimal Viable Blog with AWS Amplify and Typesense search
+
+This blog showcases low-code development using Amplify Studio and Amplify CLI.
+The blog allows Admin user group to create posts and add tags to posts as well as upload images. The blog also allows users to search for posts by title. The blog is built using AWS Amplify, Next.js, Typesense.
+
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+- Run `amplify init` to initialize your Amplify project.
+
+- add Typesense api keys in amplify/backend/api/simplebloggql/parameters.json. As this project uses [@typesense](https://www.npmjs.com/package/amplify-graphql-typesense-transformer) transformer for our AppSync schema. Optional for search functionality.
+
+- Run `amplify push` to provision the backend resources.
+
+- Link [Figma design file](https://www.figma.com/community/file/1298791582009078828) to your Amplify Studio project.
+
+- In Amplify Studio connect the figma file to the backend resources and update forms to use the new backend.
+
+- Run `amplify pull` to re-generate the ui components.
+
+- More information available in my [blog post](https://todo.com)
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -34,10 +52,8 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To learn more about Amplify, take a look at the following resources:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Amplify Documentation](https://docs.amplify.aws/) - learn about Amplify features and API.
+- [Amplify CLI Documentation](https://docs.amplify.aws/cli) - learn about Amplify CLI features and API.
+- [Amplify Figma to Code](https://docs.amplify.aws/console/uibuilder/figmatocode/) - learn about Amplify Studio features.
