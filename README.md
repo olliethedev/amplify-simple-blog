@@ -21,7 +21,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - Run `amplify pull` to re-generate the ui components.
 
-- More information available in my [blog post](https://todo.com)
+- More information available in my [blog post](https://medium.com/@olliethedev/building-a-feature-rich-blog-with-aws-amplify-a-low-code-approach-277d49f34c28)
 
 Run the development server:
 
