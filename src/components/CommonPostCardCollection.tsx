@@ -29,7 +29,6 @@ export const CommonPostCardCollection = ({
             padding: 0,
             borderRadius: "10px",
             children: item.image.startsWith('http') ? (
-              /* eslint-disable-next-line @next/next/no-img-element */
               <Image 
               src={item.image} 
               alt="post image" 

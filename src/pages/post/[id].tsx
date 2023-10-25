@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -10,14 +10,15 @@ import { Flex, View } from "@aws-amplify/ui-react";
 import { DataStore } from "@aws-amplify/datastore";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import { BadgeElementCollection, PostDetail } from "@/ui-components";
-import { LazyPost, Post as PostModel, Tag } from "@/models";
+import { PostDetail } from "@/ui-components";
+import { LazyPost, Post as PostModel } from "@/models";
 import { PageWrapper } from "@/components/PageWrapper";
 import { MemoizedReactMarkdown } from "@/components/MemoizedReactMarkdown";
 
 import { serializeModel, deserializeModel } from "@aws-amplify/datastore/ssr";
 
 import awsExports from "@/aws-exports";
+import { WrappedBadgeElementCollection } from "@/components/WrappedBadgeElementCollection";
 
 const SITE_NAME = "Simple Amplify Blog";
 
@@ -41,24 +42,6 @@ export default function PostDetailPage({ serializedPost }: PostDetailProps) {
   const imageURL = useStorageURL({
     key: post.image,
   });
-
-  const [postTags, setPostTags] = React.useState<Tag[]>([]);
-
-  useEffect(() => {
-    const work = async () => {
-      const tags = await post.tags.toArray();
-      setPostTags(
-        tags.map(
-          (tag) =>
-            ({
-              name: tag.tagName,
-            } as Tag)
-        )
-      );
-    };
-    work();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const TITLE = post.title + " | " + SITE_NAME;
 
@@ -98,18 +81,7 @@ export default function PostDetailPage({ serializedPost }: PostDetailProps) {
                 },
                 Tags: {
                   children: (
-                    <BadgeElementCollection
-                      items={postTags}
-                      overrideItems={({ item, index }) => ({
-                        overrides: {
-                          Badge: {
-                            style: {
-                              cursor: "pointer",
-                            },
-                          },
-                        },
-                      })}
-                    />
+                    <WrappedBadgeElementCollection post={post} />
                   ),
                 },
                 MarkdownContainer: {
