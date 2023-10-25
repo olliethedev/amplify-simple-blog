@@ -12,7 +12,7 @@ type Post @model @typesense @auth(rules: [
   tags: [Tag] @manyToMany(relationName: "PostTag")
 }
 
-type Tag @model  @auth(rules: [
+type Tag @model @auth(rules: [
   { allow: groups, groups: ["Admins"] },
   { allow: public, operations: [read] }
   ]){

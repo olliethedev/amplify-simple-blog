@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Flex, Heading } from "@aws-amplify/ui-react";
 import { PostUpdateForm, TagCreateForm } from "@/ui-components";
 import { Post } from "@/models";
@@ -8,6 +9,7 @@ interface UpdatePostLayoutProps {
 }
 
 export const UpdatePostLayout = ({ post }: UpdatePostLayoutProps) => {
+  const { push } = useRouter();
   return (
     <>
       <Flex direction="column" gap="2rem" alignItems="center" width="100%">
@@ -23,8 +25,11 @@ export const UpdatePostLayout = ({ post }: UpdatePostLayoutProps) => {
         <PostUpdateForm
           overrides={{
             PostUpdateForm: {
-              width: "100%",
-            },
+              width: "100%"
+            }
+          }}
+          onSuccess={ () => {
+            push("/");
           }}
           post={post as Post}
         />
