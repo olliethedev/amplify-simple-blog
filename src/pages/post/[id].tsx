@@ -35,8 +35,6 @@ interface PostDetailProps {
 }
 
 export default function PostDetailPage({ serializedPost }: PostDetailProps) {
-  //   const router = useRouter();
-  //   const id = router.query.id;
   const post: PostModel = deserializeModel(PostModel, serializedPost);
 
   const imageURL = useStorageURL({
